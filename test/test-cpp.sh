@@ -18,7 +18,7 @@ OUTPUT_FILE="$OUTPUT_DIR/downscale-linear"
 TEST_COMMAND="ffmpeg -i '$TEST_FILE' -f rawvideo -pix_fmt gray8 -s 1280x720 pipe:1 2>/dev/null | $OUTPUT_FILE | ffmpeg -f rawvideo -pixel_format gray8 -video_size 640x360 -i pipe:0 -y $OUTPUT_FILE.jpg 2>/dev/null"
 
 echo "Suggested march/mtune parameters:"
-gcc -v -E -march=native -mtune=native -O2 - 2>&1 <<<'' | grep -E -o -e '-march=[^ ]+' -e '-mtune=[^ ]+' | grep -v native | sort -u | tr '\n' ' ' && echo
+gcc -v -E -march=native -mtune=native -O2 - 2>&1 <<<'' | grep -E -o -e '-march=[^ '"'"']+' -e '-mtune=[^ '"'"']+' | grep -v native | sort -u | tr '\n' ' ' && echo
 echo
 
 num="0"

@@ -1,6 +1,5 @@
 const { PerformanceObserver, performance } = require('perf_hooks');
-const downscaleLinear = require('./build/Release/downscalelinear.node'); // C++ addon
-// const downscaleLinear = require('./test/downscale-linear.js'); // pure javascript
+const downscaleLinear = process.argv[2] === '--javascript' ? require('./test/downscale-linear.js') : require('./build/Release/downscalelinear.node');
 
 var frames = 0;
 var timeStart = Date.now();
